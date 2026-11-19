@@ -69,6 +69,7 @@ export function CartProvider({ children }: CartProviderProps) {
       const stored = localStorage.getItem(CART_STORAGE_KEY);
       if (stored) {
         const items: CartItem[] = JSON.parse(stored);
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Restore browser storage after hydration.
         setCart({
           items,
           totals: calculateTotals(items),

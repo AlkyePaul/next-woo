@@ -56,7 +56,7 @@ Instead of building custom Stripe integration and authentication:
 
 - **WordPress 6.0+** with HTTPS enabled
 - **WooCommerce 8.0+** installed and activated
-- **Node.js 18+** and pnpm
+- **Node.js 20.9+** and pnpm
 
 ### Step 1: WordPress Setup
 
@@ -132,6 +132,14 @@ WORDPRESS_WEBHOOK_SECRET="your-secret-key-here"
 WC_CONSUMER_KEY="ck_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 WC_CONSUMER_SECRET="cs_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
+
+For a Vercel preview, set the same variables in the project’s Preview
+environment and point them at a staging WooCommerce installation. Keep the
+consumer key, consumer secret, and webhook secret server-side. Verify that
+`/shop` can list products and open a product with variations before enabling
+checkout. The starter checkout creates an unpaid order through the REST API.
+Validate extensions such as WooCommerce Deposits with the native WooCommerce
+cart and checkout on staging before taking live payments.
 
 ### Step 5: Payment Gateway
 
